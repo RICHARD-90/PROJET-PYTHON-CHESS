@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2021-02-08" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.11" locale="fr_FR">
+    <description/>
+    <view zooming-state="default:2" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="167" order="0"/>
+        <field id="tpd4" name="Date de début" width="65" order="1"/>
+        <field id="tpd5" name="Date de fin" width="64" order="2"/>
+        <timeline><![CDATA[4]]></timeline>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nom" width="210" order="0"/>
+        <field id="1" name="Rôle par défaut" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="36" name="debut" color="#8cb6ce" meeting="false" start="2021-02-09" duration="1" complete="0" thirdDate="2021-02-05" thirdDate-constraint="0" expand="true">
+            <depend id="0" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="0" name="tâche_0&lt;Documentation&gt;" color="#8cb6ce" meeting="false" start="2021-02-10" duration="4" complete="0" thirdDate="2021-02-09" thirdDate-constraint="1" expand="true">
+            <notes><![CDATA[SQLalchemy
+SOLID
+PEP 8]]></notes>
+            <depend id="4" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="4" name="tâche_1&lt;Concevoir et impl´ementer les structures de donn´ees pour mod´eliser les donn´ees personnelles, les noeuds syst`eme et les utilisateurs.&gt;" color="#8cb6ce" meeting="false" start="2021-02-16" duration="2" complete="0" thirdDate="2021-02-05" thirdDate-constraint="0" expand="true">
+            <depend id="8" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="8" name="tâche_2&lt;Implementez une methode permettant au systeme de savoir ou placer les donnees du systemes.&gt;" color="#8cb6ce" meeting="false" start="2021-02-18" duration="5" complete="0" thirdDate="2021-02-05" thirdDate-constraint="0" expand="true">
+            <depend id="17" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="17" name="tâche_3&lt;Adaptez votre programme pour que deux utilisateurs puissent etre interesses par une meme donnee.&gt;" color="#8cb6ce" meeting="false" start="2021-02-25" duration="4" complete="0" thirdDate="2021-02-05" thirdDate-constraint="0" expand="true">
+            <depend id="20" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="20" name="tâche_4&lt;Optimisation&gt;" color="#8cb6ce" meeting="false" start="2021-03-03" duration="7" complete="0" thirdDate="2021-02-05" thirdDate-constraint="0" expand="true">
+            <depend id="44" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="44" name="fin" color="#8cb6ce" meeting="false" start="2021-03-12" duration="1" complete="0" thirdDate="2021-02-05" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="N'dri Richard" function="Default:1" contacts="n-dri.n-dri@etu.univ-smb.fr" phone="0669081946"/>
+    </resources>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles roleset-name="SoftwareDevelopment"/>
+</project>
