@@ -13,7 +13,7 @@ public class Donnee{
 		this.nom = nom;
 	}
 
-	// setters 
+	// setters
 	public void setId(int Id){
 		this.Id = Id;
 	}
@@ -23,7 +23,7 @@ public class Donnee{
 	public void setNom(String nom){
 		this.nom = nom;
 	}
-	
+
 	// getters
 	public int getId(){
 		return this.Id;
@@ -33,6 +33,14 @@ public class Donnee{
 	}
 	public String getNom(){
 		return this.nom;
+	}
+
+	public void stocker_dans(Noeud p_node){
+		/*
+			la donnee est sauvergarder dans le noeud
+		*/
+		p_node.addDonnee(this);
+		p_node.setCapacite(p_node.getCapacite() - this.getTaille());
 	}
 
 }

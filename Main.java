@@ -8,14 +8,14 @@ public class Main{
 		Donnee d2 = new Donnee(2, 25, "donnee2");
 		Donnee d3 = new Donnee(3, 50, "donnee3");
 		// creation des noeuds
-		// noeud 1 
+		// noeud 1
 		Noeud nd1 = new Noeud(1, 50);
 		// noeud 2
 		Noeud nd2 = new Noeud(2, 40);
 		// noeud 2
-		Noeud nd3 = new Noeud(3, 40);
+		Noeud nd3 = new Noeud(3, 50);
 		// noeud utilisateur
-		Utilisateur util = new Utilisateur(1, 100);
+		Utilisateur util = new Utilisateur(4, 100);
 		// remplissqge des noeuds
 		nd1.setAcces(util);
 		nd1.setAcces(nd2);
@@ -47,7 +47,14 @@ public class Main{
 		}};
 		Tree tree = new Tree(nodes, arcs);
 		//********************************************************************
-		//System.out.println(util.getNoeudAccessible());
+		System.out.println(util.getDonneeStocker());
+		System.out.println(util.stockage_data(tree));
+		//util.stocker(tree);
+		System.out.println(util.est_en_relation_avec(tree));
+		//System.out.println(util.noeud_accessible_trie(tree));
+		System.out.println(nd1.getDonneeStocker());
+		System.out.println(nd2.getDonneeStocker());
+		System.out.println(nd3.getDonneeStocker());
 		System.out.println("--Everything is okay--");
 	}
 }
