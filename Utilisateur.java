@@ -1,65 +1,80 @@
 
 import java.util.ArrayList;
 
-class Utilisateur extends Noeud{
+class Utilisateur extends Noeud
+	implements UtilisateurPropriete{
 	// les attributs
-	private String nom, prenom;
+	protected ArrayList<Donnee> donnee_interet = new ArrayList<Donnee>();
+	protected int noeud_directement_accessible;
 
-	Utilisateur(int id, int cap){
-		super(id, cap);
+	protected ArrayList<NoeudSysteme> liste_noeud_systeme;
+
+	Utilisateur(int id){
+		super(id);
 	}
 
-	// setters
-	public void setNom(String nom){
-		this.nom = nom;
+	public void set_noeud_directement_accessible(int id_noeud){
+		this.noeud_directement_accessible = id_noeud;
 	}
 
-	public void setPrenom(String prenom){
-		this.prenom = prenom;
+	public int get_noeud_directemen_accessible(){
+		return this.noeud_directement_accessible;
 	}
 
-	// getters
-	public String getNom(){
-		return this.nom;
+	public ArrayList<Donnee> getDonnee_interet() {
+		return donnee_interet;
 	}
 
-	public String getPrenom(){
-		return this.prenom;
+	public void add_donnee_interet(Donnee p_donnee_interet) {
+		this.donnee_interet.add(p_donnee_interet);
 	}
 
-	public String stockage_data(Tree p_tree){
-		ArrayList<Donnee> liste_donnee = this.getDonneeStocker();
-		ArrayList<Noeud> noeud_accessible = this.getNoeudAccessible();
+	public void set_liste_noeud_systeme(ArrayList<NoeudSysteme> liste){
+		this.liste_noeud_systeme = liste;
+	}
+
+	public ArrayList<NoeudSysteme> get_liste_noeud_systeme(){
+		return this.liste_noeud_systeme;
+	}
+
+	public NoeudSysteme noeud_info(int id){
 		/*
-		sachant que l'utilisateur a acces a tous les noeuds du reseau il est
-		interressant de se focaliser sur les noeuds proches de lui
+			prend en paramettre l'identifiant d'un noeud systeme puis retourne son
+			l'objet NoeudSysteme associé
 		*/
-		for (int i = 0; i < liste_donnee.size(); i++){
+		NoeudSysteme node = new NoeudSysteme(1,1);
+		for (NoeudSysteme v_noeud : this.get_liste_noeud_systeme()){
+			if (v_noeud.getId() == id) node =  v_noeud;
+		}
+		return node;
+	}
+
+	@Override
+	public void stockage_donnee(Tree p_tree){
+		/*
+			propose un stockage efficace des donnees de l'utilisateur
+		*/
+		for (Donnee data : this.getDonnee_interet()){
 			int compteur = 0;
-			// on recupère la donnee que l'on met dans une variable
-			Donnee donnee = liste_donnee.get(i);
-			/* on parcours la liste des noeuds accessible afin de trouver un
-			emplacement pour cette donnee*/
-			for (int k = 0; k < noeud_accessible.size(); k++){
-				Noeud noeud_actuel = noeud_accessible.get(k);
-				if (noeud_actuel.on_peut_stocker(donnee) && compteur == 0){
-					// on stock puis on modifie la capacité du noeud
-					noeud_actuel.addDonnee(donnee);
-					compteur ++;
-					noeud_actuel.setCapacite(noeud_actuel.getCapacite() - donnee.getTaille());
+			NoeudSysteme noeud_proche = this.noeud_info(this.get_noeud_directemen_accessible());
+			if (noeud_proche.on_peut_stocker(data) && compteur == 0){
+				data.stocker_dans(noeud_proche);
+				compteur++;
+			}
+			else{
+				ArrayList<Integer> voisin_noeud_proche = noeud_proche.noeud_accessible_sans_utilisateur();
+				ArrayList<Integer> sorted_list = p_tree.sorted_liste(voisin_noeud_proche, this.get_noeud_directemen_accessible());
+				for (int id_noeud : sorted_list){
+					NoeudSysteme noeud = this.noeud_info(id_noeud);
+					if (noeud.on_peut_stocker(data) && compteur == 0){
+						data.stocker_dans(noeud);
+						compteur++;
+					}
+					else continue;
 				}
-				else
-					continue;
 			}
 		}
-		return "--stockage effectué avec succes--";
 	}
 
-// 	public ArrayList<Noeud> noeud_accessible_trie(Tree p_tree){
-// 		/*
-// 		retourne la liste des noeuds accessibles classée des plus proche au plus eloignées.
-// 		*/
-// 		ArrayList<Noeud> liste = new ArrayList<Noeud>();
-// 		return this.noeud_accessible_trie(p_tree, liste);
-// 	}
+
 }
