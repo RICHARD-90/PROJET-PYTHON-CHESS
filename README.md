@@ -7,8 +7,8 @@ Le but de ce projet est de réaliser un systeme de stockage des données personn
 * **Tree** : permet d'implémenter des graphes. La répresentation utiliser est la répresentation ensembliste.
 * **Donnee** : permet de répresenter des données.
 * **Noeud** : permet de creer un noeud. 
-** **NoeudSysteme** : cette classe hérite de la classe Noeud. Elle permet de representer des des noeuds capables de contenir des données.
-** **Utilisateur** : cette classe hérite de la classe Noeud. Il s'agit d'un noeud qui est interessé par des données et désire les stocker.
+* **NoeudSysteme** : cette classe hérite de la classe Noeud. Elle permet de representer des des noeuds capables de contenir des données.
+* **Utilisateur** : cette classe hérite de la classe Noeud. Il s'agit d'un noeud qui est interessé par des données et désire les stocker.
 
 ## Les exigences concernant l’environnement de développement
 le projet est developpé en **Java** ceci dit est fonctionne sur tout environnement de developpement java.
