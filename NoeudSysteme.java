@@ -1,19 +1,19 @@
 import java.util.ArrayList;
 
 public class NoeudSysteme extends Noeud
-  implements NoeudSystemeProprite
-  {
+  implements NoeudSystemeProprite{
   // attributs
   protected int capacite;
   protected ArrayList<Donnee> donnee_stocker = new ArrayList<Donnee>();
   protected ArrayList<Integer> noeud_accessible = new ArrayList<Integer>();
 
-
+  // constructeur
   NoeudSysteme(int id, int capacite){
     super(id);
     this.capacite = capacite;
   }
 
+  // setters
   public void setCapacite(int capacite){
    this.capacite = capacite;
   }
@@ -22,20 +22,27 @@ public class NoeudSysteme extends Noeud
     this.noeud_accessible.add(id_node);
    }
 
+   // getters
    public ArrayList<Integer> getNoeudAccessible(){
       return this.noeud_accessible;
    }
 
+   public int getCapacite(){
+    return this.capacite;
+   }
+
+   public ArrayList<Donnee> getDonneeStocker(){
+   	 	return this.donnee_stocker;
+   }
+
+   // fonctionnalités des noeuds systemes
+
+  @Override
   public void stocker(Donnee data){
+  /*
+    permet de stocker une donnee dans un noeud
+  */
    this.donnee_stocker.add(data);
-  }
-
-  public int getCapacite(){
-   return this.capacite;
-  }
-
-  public ArrayList<Donnee> getDonneeStocker(){
-  	 	return this.donnee_stocker;
   }
 
   @Override
@@ -65,6 +72,5 @@ public class NoeudSysteme extends Noeud
    else
      return false;
   }
-
 
 }

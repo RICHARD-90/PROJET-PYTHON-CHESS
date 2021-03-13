@@ -118,12 +118,14 @@ public class Main{
 		}};
 		//**************************************************************************
 		Tree arbre = new Tree(liste_noeud, liste_arc);
-		util3.stockage_donnee(arbre);
+		//util3.stockage_avancee1(arbre);
+		util1.stockage_avancee1(arbre);
+		//util2.stockage_avancee1(arbre);
 		System.out.println(nd1.getDonneeStocker());
 		System.out.println(nd2.getDonneeStocker());
 		System.out.println(nd3.getDonneeStocker());
 		System.out.println(nd4.getDonneeStocker());
 		System.out.println(nd5.getDonneeStocker());
 		System.out.println("--Everything is okay--");
-}
+	}
 }

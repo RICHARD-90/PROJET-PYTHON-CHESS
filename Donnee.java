@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class Donnee{
 	// les attributs
-
 	private int Id, taille;
 	private String nom;
 	private ArrayList<Utilisateur> utilisateur_interesse = new ArrayList<Utilisateur>();
@@ -26,6 +25,10 @@ public class Donnee{
 		this.nom = nom;
 	}
 
+	public void set_utilisateur_interesse(Utilisateur p_util){
+		this.utilisateur_interesse.add(p_util);
+	}
+
 	// getters
 	public int getId(){
 		return this.Id;
@@ -37,6 +40,14 @@ public class Donnee{
 		return this.nom;
 	}
 
+	public ArrayList<Utilisateur> get_utilisateur_interesse(){
+		/*
+			retourne la liste de tous les utilisateurs interessés par cette donnée
+		*/
+		return this.utilisateur_interesse;
+	}
+
+	// Operations propres aux données
 	public void stocker_dans(NoeudSysteme p_node){
 		/*
 			la donnee est sauvergarder dans le noeud
@@ -45,15 +56,36 @@ public class Donnee{
 		p_node.setCapacite(p_node.getCapacite() - this.getTaille());
 	}
 
-	public void set_utilisateur_interesse(Utilisateur p_util){
-		this.utilisateur_interesse.add(p_util);
+	public ArrayList<Integer> elle_est_stockee(ArrayList<NoeudSysteme> liste_noeud){
+		int capteur = 0;
+		int id = 0;
+		for(NoeudSysteme noeud : liste_noeud){
+			ArrayList<Donnee> liste_donnee_noeud = noeud.getDonneeStocker();
+			for (int k = 0; k < liste_donnee_noeud.size(); k++){
+				Donnee donnee =liste_donnee_noeud.get(k);
+				if (this == donnee){
+					capteur = 1;
+					id = noeud.getId();
+				}
+			}
+		}
+		int a, b;
+		a = capteur;
+		b = id;
+		ArrayList<Integer> reponse = new ArrayList<Integer>(){{
+			add(a);
+			add(b);
+		}};
+		return reponse;
 	}
 
-	public ArrayList<Utilisateur> get_utilisateur_interesse(){
-		/*
-			retourne la liste de tous les utilisateurs interessés par cette donnée
-		*/
-		return this.utilisateur_interesse;
+	public void destockage(NoeudSysteme nd){
+		for(int g = 0; g < nd.getDonneeStocker().size(); g++){
+			if (this == nd.getDonneeStocker().get(g)){
+				nd.getDonneeStocker().remove(g);
+				nd.setCapacite(nd.getCapacite() + this.getTaille());
+			}
+		}
 	}
 
 }
