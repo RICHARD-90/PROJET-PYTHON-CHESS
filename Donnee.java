@@ -1,5 +1,4 @@
-
-import java.util.ArrayList;
+import java.util.*;
 
 public class Donnee{
 	// les attributs
@@ -8,7 +7,7 @@ public class Donnee{
 	private ArrayList<Utilisateur> utilisateur_interesse = new ArrayList<Utilisateur>();
 
 	//constructeur
-	Donnee(int Id, int taille, String nom){
+	public Donnee(int Id, int taille, String nom){
 		this.Id = Id;
 		this.taille = taille;
 		this.nom = nom;
@@ -84,6 +83,20 @@ public class Donnee{
 			if (this == nd.getDonneeStocker().get(g)){
 				nd.getDonneeStocker().remove(g);
 				nd.setCapacite(nd.getCapacite() + this.getTaille());
+			}
+		}
+	}
+
+	public void stockage_efficace(ArrayList<Integer> liste, Utilisateur util){
+		int compteur = 0;
+		for (int k = 0; k<25; k++){
+			for (int id_noeud : liste){
+				NoeudSysteme current_node = util.noeud_info(id_noeud);
+				if ((this.getTaille() >= current_node.getCapacite() - k) && (this.getTaille() <= current_node.getCapacite()) && (compteur == 0)){
+					this.stocker_dans(current_node);
+					compteur++;
+					continue;
+				}
 			}
 		}
 	}

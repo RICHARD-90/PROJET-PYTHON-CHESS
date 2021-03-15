@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class NoeudSysteme extends Noeud
   implements NoeudSystemeProprite{
@@ -8,7 +8,7 @@ public class NoeudSysteme extends Noeud
   protected ArrayList<Integer> noeud_accessible = new ArrayList<Integer>();
 
   // constructeur
-  NoeudSysteme(int id, int capacite){
+  public NoeudSysteme(int id, int capacite){
     super(id);
     this.capacite = capacite;
   }
@@ -66,7 +66,7 @@ public class NoeudSysteme extends Noeud
       * permet de savoir si l'on peut y stocker une donnee ou non
     */
    int donnee_taille = donnee.getTaille();
-   if (donnee_taille <= this.capacite){
+   if (donnee_taille <= this.getCapacite()){
      return true;
    }
    else
