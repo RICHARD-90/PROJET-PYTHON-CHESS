@@ -1,12 +1,31 @@
-# Gerer le stockage de donnee
-###Description générale du projet
-Le but de ce projet est de realiser un systeme de stockage des donnees personnels en proposant un emplacement efficaces pour des donnees de type variable.
-Arc : permet de creer un arc 
-Tree : la representation utiliser est la representation ensembliste
-Donnee : permet de creer un objet de type donnee
-Noeud : permet de creer un noeud 
-Utilisateur : sous classe de la classe Noeud
-Les exigences concernant l’environnement de développement
-le projet est developpé en java ceci dit est fonctionne sur tout environnement de developpement java.  Il faut penser a sauvergarder toutes les classes dans le meme dossier ou package.
-Instruction pour l’installation et l’utilisation.
+# Stockage de Données Personnelles
+## Description générale du projet
+Le but de ce projet est de réaliser un systeme de stockage des données personnelles en proposant un emplacement efficace pour des donnees de type variable.
+
+## Les Differentes classes developpées dans ce projet
+* **Arc** : permet de creer des arcs 
+* **Tree** : permet d'implémenter des graphes. La répresentation utiliser est la répresentation ensembliste.
+* **Donnee** : permet de répresenter des données.
+* **Noeud** : permet de creer un noeud. 
+* **NoeudSysteme** : cette classe hérite de la classe Noeud. Elle permet de representer des noeuds capables de contenir des données.
+* **Utilisateur** : cette classe hérite de la classe Noeud. Il s'agit d'un noeud qui est interessé par des données et désire les stocker.
+
+## Les exigences concernant l’environnement de développement
+le projet est developpé en **Java** ceci dit est fonctionne sur tout environnement de developpement java.
+
+## Instruction pour l’installation et l’utilisation.
+#### Etape 1 : telecharge le dossier 
 $ git clone https://github.com/RICHARD-90/Stockage-de-Donnees-Personnelles.git
+
+#### Etape 2 : importer les packages
+$ import Noeud.*
+
+## Principe et notion utilisés
+
+Principe de conception SOLID
+* Single responsibility principle
+* Open/closed principle
+* Liskov substitution principle
+* Interface segregation principle
+* Dependency inversion principle
+
