@@ -7,10 +7,10 @@ Le but de ce projet est de réaliser un systeme de stockage des données personn
 * Eviter la création de trou de mémoire dans les nœuds
 
 ## Les taches
-* tache_1 : Creation de la struture de donnee
-* tache_2 : stockage efficace de donnee en placant les donnees les unes apres les autres
-* tache_3 : gestion des conflits
-* tache-4 : optimisation (elle s'est fait dans le main )
+* tache_1 (structure_data) : Creation de la struture de donnee
+* tache_2 (stockage_etape1) : stockage efficace de donnee en placant les donnees les unes apres les autres
+* tache_3 (gestion des conflits) : gestion des conflits
+* tache-4 (optimisation) : optimisation (elle s'est fait dans le main )
 
 ## Les Differentes classes developpées dans ce projet
 * **Arc** : permet de creer des arcs 
