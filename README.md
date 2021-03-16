@@ -17,7 +17,9 @@ le projet est developpé en **Java** ceci dit est fonctionne sur tout environnem
 #### Etape 1 : telecharge le dossier 
 $ git clone https://github.com/RICHARD-90/Stockage-de-Donnees-Personnelles.git
 
-#### Etape 2 : importer les packages
+#### Etape 2 :
+Executer tous les fichiers .java dans le meme dossier
+ou alors :
 $ import Noeud.*
 
 ## Principe et notion utilisés
