@@ -2,6 +2,10 @@
 ## Description générale du projet
 Le but de ce projet est de réaliser un systeme de stockage des données personnelles en proposant un emplacement efficace pour des donnees de type variable.
 
+* Trouver le meilleur emplacement 
+* Gestion des conflits
+* Eviter la création de trou de mémoire dans les nœuds
+
 ## Les Differentes classes developpées dans ce projet
 * **Arc** : permet de creer des arcs 
 * **Tree** : permet d'implémenter des graphes. La répresentation utiliser est la répresentation ensembliste.
