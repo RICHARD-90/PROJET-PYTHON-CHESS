@@ -1,7 +1,7 @@
-package Noeud.Utilisateur;
-import java.util.*;
 
-public class Utilisateur extends Noeud
+import java.util.ArrayList;
+
+class Utilisateur extends Noeud
 	implements UtilisateurPropriete{
 	// les attributs
 	protected ArrayList<Donnee> donnee_interet = new ArrayList<Donnee>();
@@ -9,7 +9,7 @@ public class Utilisateur extends Noeud
 	protected ArrayList<NoeudSysteme> liste_noeud_systeme;
 
 	// constructeur
-	public Utilisateur(int id){
+	Utilisateur(int id){
 		super(id);
 	}
 
@@ -58,11 +58,26 @@ public class Utilisateur extends Noeud
 		/*
 			permet de stocker des donnees qui n'ont pas encore ete stocker
 		*/
+		int compteur = 0;
 		NoeudSysteme noeud_proche = this.noeud_info(this.get_noeud_directemen_accessible());
+		if (noeud_proche.on_peut_stocker(data) && compteur == 0){
+			data.stocker_dans(noeud_proche);
+			compteur++;
+		}
 
-		ArrayList<Integer> voisin_noeud_proche = noeud_proche.noeud_accessible_sans_utilisateur();
-		ArrayList<Integer> sorted_list = tree.sorted_liste(voisin_noeud_proche, this.get_noeud_directemen_accessible());
-		data.stockage_efficace(sorted_list, this);
+		else{
+			ArrayList<Integer> voisin_noeud_proche = noeud_proche.noeud_accessible_sans_utilisateur();
+			ArrayList<Integer> sorted_list = tree.sorted_liste(voisin_noeud_proche, this.get_noeud_directemen_accessible());
+
+			for (int id_noeud : sorted_list){
+				NoeudSysteme noeud = this.noeud_info(id_noeud);
+				if (noeud.on_peut_stocker(data) && compteur == 0){
+					data.stocker_dans(noeud);
+					compteur++;
+				}
+				else continue;
+			}
+		}
 	}
 
 	@Override
@@ -77,10 +92,17 @@ public class Utilisateur extends Noeud
 		else{
 			ArrayList<Integer> chemin;
 			chemin = tree.simili_dijkstra(noeud.getId(), this);
-			data.stockage_efficace(chemin, this);
-			data.destockage(noeud);
-		}
+			int milieu = (int) chemin.size()/2;
+			int compteur = 0;
 
+			for (int t = milieu-1; t < milieu+1 ; t++){
+				NoeudSysteme n = this.noeud_info(chemin.get(t));
+				if ((n.on_peut_stocker(data)) && (compteur == 0)){
+					data.stocker_dans(n);
+					compteur++;}
+			}
+		}
+		data.destockage(noeud);
 	}
 
 	@Override

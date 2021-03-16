@@ -1,4 +1,4 @@
-
+package Noeud.utilisateur;
 public interface UtilisateurPropriete{
 
 

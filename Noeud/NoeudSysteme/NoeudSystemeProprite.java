@@ -1,4 +1,7 @@
+package Noeud.NoeudSysteme;
+
 import java.util.ArrayList;
+
 
 public interface NoeudSystemeProprite{
 
